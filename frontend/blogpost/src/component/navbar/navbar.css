@@ -1,0 +1,35 @@
+.navbar{
+    margin-top: 0px;
+    height: 60px;
+    width: 100%;
+    background-color: rgb(10, 97, 68);
+    position: fixed;
+    top: 0;
+    left: 0;   
+    
+}
+
+.nav{
+    margin-top: 0px;
+    display: flex;
+    
+
+}
+
+.nav-item{
+    margin-top: 0px;
+    height: 40px;
+    margin-left: 30px;
+    align-content: center;
+    color:white;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+    
+}
+
+.nav-item:hover{
+    background-color: white;
+    color: #000;
+    border-radius: 3px;
+}

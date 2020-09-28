@@ -1,0 +1,32 @@
+.toolbox{
+    margin:20px;
+    margin-top: 100px;
+    width: 100%;
+   
+}
+.title{
+    width: 100%;
+    margin: 10px !important;
+}
+.textarea{
+    width: 100%;
+    margin:10px;
+    height: 60px;
+    border:none;
+    border-bottom: 1px solid;
+    
+}
+
+.button{
+    background-color: lightblue !important;
+    border-radius: 12px !important;
+    width: 15% !important;
+    
+    
+}
+
+.butoon{
+    width: 100%;
+  
+
+}
