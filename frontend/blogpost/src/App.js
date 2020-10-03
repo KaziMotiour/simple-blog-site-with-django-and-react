@@ -1,12 +1,15 @@
 import React from "react";
 import Navbar from "./component/navbar/navbar";
 import Articles from "./component/articles/articles";
-import {BrowserRouter as Router, Route } from "react-router-dom";
-import Login from './component/Login/Login'
-import Singup from './component/singup/Singup'
-import {connect} from 'react-redux'
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Login from "./component/Login/Login";
+import Singup from "./component/singup/Singup";
+import { useDispatch, useSelector } from "react-redux";
 
-function App(props) {
+export default function App() {
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+  const { token, loading, error } = auth;
   return (
     <Router>
       <div className="App">
@@ -14,23 +17,10 @@ function App(props) {
         <Navbar />
 
         {/* Articles */}
-        {props.token ? <Route path="/" exact component={Articles} />: null}
+        {props.token ? <Route path="/" exact component={Articles} /> : null}
         <Route path="/login" exact component={Login} />
         <Route path="/singup" exact component={Singup} />
-        </div>
+      </div>
     </Router>
   );
 }
-
-
-const mapStateToProps = state =>({
-
-  token: state.auth.token,
-  loading: state.auth.loading,
-    error: state.auth.error
-})
-
-
-
-
-export default connect(mapStateToProps, null)(App);
