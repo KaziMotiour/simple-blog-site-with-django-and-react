@@ -1,8 +1,41 @@
 import { Avatar } from "@material-ui/core";
-import React from "react";
+import React, {useState} from "react";
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import "./post.css";
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import {connect} from 'react-redux'
 
 function Post(props) {
+
+
+  const [openedit, setOpenEdit] = React.useState(false);
+  const [openDelete, setOpenDelete] = React.useState(false);
+
+
+  const handleDeleteOpen = () => {
+    setOpenDelete(true);
+  };
+
+  const handleDeleteClose = () => {
+    setOpenDelete(false);
+  };
+
+
+  const handleEditOpen = () => {
+    setOpenEdit(true);
+  };
+
+  const handleEditClose = () => {
+    setOpenEdit(false);
+  };
+
   return (
     <div className="post">
 
@@ -11,6 +44,13 @@ function Post(props) {
         <div className="showtime">
           <h3>kazi Motiour</h3>
           <span>time</span>
+        </div>
+        <div>
+
+        </div>
+        <div className="icon">
+          <EditIcon className="editIcon" onClick={handleEditOpen} />
+          <DeleteIcon className="deleteIcon" onClick={handleDeleteOpen}/>
         </div>
       </div>
       <div className="body">
@@ -22,8 +62,81 @@ function Post(props) {
           <h4>comment</h4>
           <h4>share</h4>
       </div>
+
+
+
+
+
+      {/* Dialog for edit content */}
+      <div>  
+     <Dialog className="dialog"  open={openedit} onClose={handleEditClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Edit</DialogTitle>
+        <DialogContent>
+         
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Title"
+            type="email"
+            fullWidth
+            value={props.title}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="content"
+            type="email"
+            fullWidth
+            value={props.content}
+            
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleEditClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleEditClose} color="primary">
+           Confirm edit
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+    
+
+    
+    {/* Dialog for Delete content */}
+    <div>
+      
+     <Dialog className="dialog" open={openDelete} onClose={handleDeleteClose} aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+           You want to Delete this article
+          </DialogContentText>
+            
+            <p>Title: {props.title}</p>
+            <p>Article: {props.content}</p>          
+      
+          </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDeleteClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleDeleteClose} color="primary">
+           Confirm edit
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+    
     </div>
   );
 }
+
+
+
+
 
 export default Post;

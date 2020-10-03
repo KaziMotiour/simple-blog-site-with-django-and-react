@@ -22,9 +22,13 @@
     margin-left: 30px;
     align-content: center;
     color:white;
-    font-size: 18px;
+    font-size: 20px;
     padding: 10px;
     cursor: pointer;
+    color:white;
+    font-weight: 500;
+    text-decoration: none !important;
+
     
 }
 
@@ -32,4 +36,13 @@
     background-color: white;
     color: #000;
     border-radius: 3px;
+}
+
+.a{
+    text-decoration: none;
+    color:white
+   
+}
+.a:hover{
+    color:black
 }

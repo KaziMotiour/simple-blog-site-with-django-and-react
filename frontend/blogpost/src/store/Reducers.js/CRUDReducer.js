@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Reducer() {
+function CRUDReducer() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function Reducer() {
     )
 }
 
-export default Reducer
+export default CRUDReducer
