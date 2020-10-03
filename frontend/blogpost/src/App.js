@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function App() {
   const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch action here
+
+  // }, [])
   const auth = useSelector((state) => state.auth);
   const { token, loading, error } = auth;
   return (
@@ -17,7 +21,7 @@ export default function App() {
         <Navbar />
 
         {/* Articles */}
-        {props.token ? <Route path="/" exact component={Articles} /> : null}
+        {token ? <Route path="/" exact component={Articles} /> : null}
         <Route path="/login" exact component={Login} />
         <Route path="/singup" exact component={Singup} />
       </div>
