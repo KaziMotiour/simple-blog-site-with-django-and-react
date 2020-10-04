@@ -1,8 +1,14 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView, CreateAPIView
+
+
 from .serializers import BlogSerializer
 from ..models import Blog
 
 class BlogListView(ListAPIView):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+
+class BlogCreateView(CreateAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
 

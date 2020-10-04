@@ -11,9 +11,17 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {connect} from 'react-redux'
+import {postUpdate, postDelete} from '../../../../store/action.js/CRUD'
 
 function Post(props) {
 
+  
+  const [updatePost, setUpdatePost] = useState({
+    
+    title:props.title,
+    content:props.content
+
+  })
 
   const [openedit, setOpenEdit] = React.useState(false);
   const [openDelete, setOpenDelete] = React.useState(false);
@@ -24,6 +32,9 @@ function Post(props) {
   };
 
   const handleDeleteClose = () => {
+
+   props.onDelete(props.id)
+
     setOpenDelete(false);
   };
 
@@ -33,8 +44,23 @@ function Post(props) {
   };
 
   const handleEditClose = () => {
+    props.onUpdate(updatePost.title, updatePost.content, props.id)
+   
     setOpenEdit(false);
   };
+
+
+  const haldleInput = (e) =>{
+
+    setUpdatePost({
+      ...updatePost,
+      [e.target.name]:e.target.value
+
+    })
+
+  }
+
+  console.log(updatePost)
 
   return (
     <div className="post">
@@ -80,7 +106,9 @@ function Post(props) {
             label="Title"
             type="email"
             fullWidth
-            value={props.title}
+            value={updatePost.title}
+            name="title"
+            onChange={(e) => haldleInput(e)}
           />
           <TextField
             autoFocus
@@ -89,7 +117,9 @@ function Post(props) {
             label="content"
             type="email"
             fullWidth
-            value={props.content}
+            value={updatePost.content}
+            name="content"
+            onChange={(e) => haldleInput(e)}
             
           />
         </DialogContent>
@@ -125,7 +155,7 @@ function Post(props) {
             Cancel
           </Button>
           <Button onClick={handleDeleteClose} color="primary">
-           Confirm edit
+           Confirm Delete
           </Button>
         </DialogActions>
       </Dialog>
@@ -136,7 +166,13 @@ function Post(props) {
 }
 
 
+const mapStateToDispatch = dispatch =>(
+  {
+      onUpdate : (title, content, id) => dispatch(postUpdate(title, content, id)),
+      onDelete : (id) => dispatch(postDelete(id)),
+
+  }
+)
 
 
-
-export default Post;
+export default connect(null, mapStateToDispatch)(Post);

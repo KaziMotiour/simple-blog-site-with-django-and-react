@@ -7,6 +7,7 @@ import Singup from './component/singup/Singup'
 import {connect} from 'react-redux'
 
 function App(props) {
+
   return (
     <Router>
       <div className="App">
