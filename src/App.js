@@ -12,7 +12,7 @@ function App(props) {
     <Router>
       <div className="App">
         {/* Navbar */}
-        <Navbar />
+        <Navbar/>
 
         {/* Articles */}
        <Route path="/" exact component={Articles} />
