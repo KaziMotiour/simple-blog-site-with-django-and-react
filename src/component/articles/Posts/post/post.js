@@ -73,10 +73,10 @@ function Post(props) {
         <div>
 
         </div>
-        <div className="icon">
+       {localStorage.getItem('token') && <div className="icon">
           <EditIcon className="editIcon" onClick={handleEditOpen} />
           <DeleteIcon className="deleteIcon" onClick={handleDeleteOpen}/>
-        </div>
+        </div>}
       </div>
       <div className="body">
         <h4>{props.title}</h4>
