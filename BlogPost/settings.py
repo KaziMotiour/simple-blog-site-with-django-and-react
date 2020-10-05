@@ -25,7 +25,7 @@ SECRET_KEY = '1ssux*e1!!j0i6x^lay@mfvvdalya0h6yp-fw0)7)mey_gil7-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kazi-motiour-django-react-app.herokuapp.com']
+ALLOWED_HOSTS = ['kazi-motiour-django-react-app.herokuapp.com','127.0.0.1']
 
 
 # Application definition
