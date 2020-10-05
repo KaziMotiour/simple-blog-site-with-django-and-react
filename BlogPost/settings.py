@@ -25,7 +25,7 @@ SECRET_KEY = '1ssux*e1!!j0i6x^lay@mfvvdalya0h6yp-fw0)7)mey_gil7-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kazi-motiour-django-react-app.herokuapp.com']
 
 
 # Application definition
@@ -130,6 +130,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
