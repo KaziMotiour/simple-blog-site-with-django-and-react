@@ -37,7 +37,7 @@ export const authFail = error =>({
 export const authLogin = (username, password) =>(
    async dispatch => {
         dispatch(authStart())
-        await axios.post('http://127.0.0.1:8000/rest-auth/login/', {username, password})
+        await axios.post('https://kazi-motiour-django-react-app.herokuapp.com/rest-auth/login/', {username, password})
         .then(res =>{
             const token = res.data.key 
             localStorage.setItem('token', token)
@@ -52,10 +52,12 @@ export const authLogin = (username, password) =>(
 )
 
 export const authRegistration = (username, email, password1, password2) =>(
+    console.log('hello'),
     async   dispatch => {
         dispatch(authStart())
-        await axios.post('http://127.0.0.1:8000/rest-auth/registration/', {username,  email, password1, password2})
+        await axios.post('https://kazi-motiour-django-react-app.herokuapp.com/rest-auth/registration/', {username,  email, password1, password2})
         .then(res =>{
+            console.log(res.data.key)
             const token = res.data.key 
             localStorage.setItem('token', token)
             dispatch(authSucces(token))

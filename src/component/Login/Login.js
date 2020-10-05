@@ -82,9 +82,21 @@ function SignIn(props) {
 
     }
 
+    async function foo() {
+      const result1 = await new Promise((resolve) => setTimeout(() => {
+        console.log('hello')
+        {localStorage.getItem('token') && props.history.push('/')}
+      }, 2000))
+      return result1
+
+    }
+
+   
+    
     const userLogin = () =>{
       props.onAuth(loginInfo.username, loginInfo.password)
-      props.history.push('/')
+      foo()
+      
     }
  
 

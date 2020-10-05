@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState,useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {NavLink} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {authRegistration} from '../../store/action.js/auth'
 
 function Copyright() {
   return (
@@ -47,15 +49,51 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp(props) {
+ function SignUp(props) {
   const classes = useStyles();
+  console.log(props)
 
+  const [singupInfo,setSingupInfo ] = useState({
+    username:'',
+    email:'', 
+    password1:'',
+    password2:''
+  })
+
+  const handleInput = (e) =>{
+    setSingupInfo({
+      ...singupInfo,
+      [e.target.name]:e.target.value
+    })
+
+  }
+
+  async function foo() {
+    const result1 = await new Promise((resolve) => setTimeout(() => {
+      console.log('hello')
+      {localStorage.getItem('token') && props.history.push('/')}
+    }, 2000))
+    return result1
+
+  }
+
+
+  const handleSingup = (e) =>{
+    e.preventDefault()
+    const {username, email, password1, password2} = singupInfo
+    console.log(username)
+    props.onSingUP(username, email, password1, password2)
+    foo()
+
+
+  }
 
   useEffect(() =>{
     
     localStorage.getItem('token') && props.history.push('/')
     
   },[])
+ 
   
   
 
@@ -71,29 +109,20 @@ export default function SignUp(props) {
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="username"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="username"
+                label="User Name"
                 autoFocus
+                onChange={(e) =>handleInput(e)}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
+            
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -103,6 +132,7 @@ export default function SignUp(props) {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={(e) =>handleInput(e)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -110,11 +140,12 @@ export default function SignUp(props) {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
+                name="password1"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e) =>handleInput(e)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -122,11 +153,12 @@ export default function SignUp(props) {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
+                name="password2"
                 label="Confirm Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e) =>handleInput(e)}
               />
             </Grid>
             
@@ -137,6 +169,7 @@ export default function SignUp(props) {
             variant="contained"
             style={{background:"rgb(10, 97, 68)", color:'white'}}
             className={classes.submit}
+            onClick={(e) =>handleSingup(e)}
           >
             Sign Up
           </Button>
@@ -155,3 +188,13 @@ export default function SignUp(props) {
     </Container>
   );
 }
+
+const mapStateToDispatch = dispatch =>(
+  {
+      onSingUP : (username, email, password1, password2) => dispatch(authRegistration(username, email, password1, password2)),
+
+  }
+)
+
+
+export default connect(null, mapStateToDispatch)(SignUp);

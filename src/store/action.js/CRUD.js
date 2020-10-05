@@ -10,7 +10,7 @@ export const fetchData = () => async dispatch =>{
 
     try {
         
-        const  res = await axios.get('http://127.0.0.1:8000/api/')
+        const  res = await axios.get('https://kazi-motiour-django-react-app.herokuapp.com/api/')
         
         dispatch({
             type: FETCH_DATA,
@@ -29,7 +29,7 @@ export const postCreate = (title, content) => async dispatch =>{
 
     try{
 
-        await axios.post(`http://127.0.0.1:8000/api/create/`,{title, content})
+        await axios.post(`https://kazi-motiour-django-react-app.herokuapp.com/api/create/`,{title, content})
 
         dispatch(fetchData())
 
@@ -51,7 +51,7 @@ export const postUpdate = (title, content, id) => async dispatch =>{
 
     try{
 
-        await axios.put(`http://127.0.0.1:8000/api/update/${id}/`, {title, content})
+        await axios.put(`https://kazi-motiour-django-react-app.herokuapp.com/api/update/${id}/`, {title, content})
 
         dispatch(fetchData())
 
@@ -73,7 +73,7 @@ export const postDelete = ( id) => async dispatch =>{
 
     try{
 
-        await axios.delete(`http://127.0.0.1:8000/api/delete/${id}/`)
+        await axios.delete(`https://kazi-motiour-django-react-app.herokuapp.com/api/delete/${id}/`)
 
         dispatch(fetchData())
 
