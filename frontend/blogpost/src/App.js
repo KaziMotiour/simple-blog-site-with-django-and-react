@@ -15,7 +15,7 @@ function App(props) {
         <Navbar />
 
         {/* Articles */}
-        {props.token ? <Route path="/" exact component={Articles} />: null}
+       <Route path="/" exact component={Articles} />
         <Route path="/login" exact component={Login} />
         <Route path="/singup" exact component={Singup} />
         </div>

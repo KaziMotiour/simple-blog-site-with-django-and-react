@@ -39,7 +39,6 @@ const authFail = (state, action)=> (
     })
 
 const authlogout = (state, action) =>(
-    console.log('ass'),
     
     {
     ...state,

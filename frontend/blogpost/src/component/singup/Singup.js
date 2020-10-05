@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -47,8 +47,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+export default function SignUp(props) {
   const classes = useStyles();
+
+
+  useEffect(() =>{
+    
+    localStorage.getItem('token') && props.history.push('/')
+    
+  },[])
+  
+  
 
   return (
     <Container component="main" maxWidth="xs">

@@ -46,7 +46,8 @@ export const postCreate = (title, content) => async dispatch =>{
 }
 
 export const postUpdate = (title, content, id) => async dispatch =>{
-    console.log('hello')
+    
+    
 
     try{
 
@@ -67,7 +68,8 @@ export const postUpdate = (title, content, id) => async dispatch =>{
 }
 
 export const postDelete = ( id) => async dispatch =>{
-    console.log('hello')
+   
+    
 
     try{
 

@@ -10,18 +10,17 @@ function Navbar(props) {
   }, []);
 
   const [permission, setPermission] = useState(false);
-  console.log(props);
   return (
     <div className="navbar">
       <div className="nav">
-        {props.token !== null ? (
+         
           <p className="nav-item">
             <Link to="/" className="a">
-              {" "}
-              Home{" "}
-            </Link>{" "}
+           
+              Home
+            </Link>
           </p>
-        ) : null}
+        
         {props.token !== null ? (
           <Link to="/login" className="nav-item" onClick={props.onLogout}>
             Logout

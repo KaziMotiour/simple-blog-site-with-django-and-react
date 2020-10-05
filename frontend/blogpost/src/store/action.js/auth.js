@@ -35,9 +35,9 @@ export const authFail = error =>({
 
 
 export const authLogin = (username, password) =>(
-    dispatch => {
+   async dispatch => {
         dispatch(authStart())
-        axios.post('http://127.0.0.1:8000/rest-auth/login/', {username, password})
+        await axios.post('http://127.0.0.1:8000/rest-auth/login/', {username, password})
         .then(res =>{
             const token = res.data.key 
             localStorage.setItem('token', token)
@@ -52,9 +52,9 @@ export const authLogin = (username, password) =>(
 )
 
 export const authRegistration = (username, email, password1, password2) =>(
-    dispatch => {
+    async   dispatch => {
         dispatch(authStart())
-        axios.post('http://127.0.0.1:8000/rest-auth/registration/', {username,  email, password1, password2})
+        await axios.post('http://127.0.0.1:8000/rest-auth/registration/', {username,  email, password1, password2})
         .then(res =>{
             const token = res.data.key 
             localStorage.setItem('token', token)

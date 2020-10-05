@@ -7,7 +7,7 @@ import {fetchData} from '../../../store/action.js/CRUD'
 function Posts(props) {
 
     const [post, setPost] = useState([])
-
+    console.log(post)
     
     useEffect(() =>{
 

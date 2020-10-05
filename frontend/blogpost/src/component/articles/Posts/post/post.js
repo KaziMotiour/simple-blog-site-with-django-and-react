@@ -60,7 +60,6 @@ function Post(props) {
 
   }
 
-  console.log(updatePost)
 
   return (
     <div className="post">

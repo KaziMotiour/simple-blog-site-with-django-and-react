@@ -17,6 +17,10 @@ import {authLogin} from '../../store/action.js/auth'
 
 
 function Copyright() {
+
+
+
+
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
@@ -50,6 +54,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignIn(props) {
+
+  useEffect(() =>{
+    
+    localStorage.getItem('token') && props.history.push('/')
+  
+  },[])
+
+
+
   const classes = useStyles();
   
 
@@ -148,7 +161,7 @@ function SignIn(props) {
 const mapStateToProps = state =>({
 
   loading: state.auth.loading,
-    error: state.auth.error
+  error: state.auth.error
 })
 
 
