@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link , withRouter} from "react-router-dom";
 import { connect } from "react-redux";
-import { authSucces, auhtLogout } from "../../store/action.js/auth";
+import { authSucces, userLogout } from "../../store/action.js/auth";
 
 function Navbar(props) {
   useEffect(() => {
     props.onSuccess();
   }, []);
+
+  const handleLogout = () =>{
+    props.onLogout()
+    props.history.push('http://localhost:3000/login/')
+
+  }
 
   const [permission, setPermission] = useState(false);
   return (
@@ -22,7 +28,7 @@ function Navbar(props) {
           </p>
         
         {props.token !== null ? (
-          <Link to="/login" className="nav-item" onClick={props.onLogout}>
+          <Link  className="nav-item" onClick={handleLogout} to="/login">
             Logout
           </Link>
         ) : (
@@ -43,7 +49,7 @@ const mapStateToProps = (state) => ({
 
 const mapStateToDispatch = (dispatch) => ({
   onSuccess: () => dispatch(authSucces()),
-  onLogout: () => dispatch(auhtLogout()),
+  onLogout: () => dispatch(userLogout()),
 });
 
-export default connect(mapStateToProps, mapStateToDispatch)(Navbar);
+export default withRouter(connect(mapStateToProps, mapStateToDispatch)(Navbar));

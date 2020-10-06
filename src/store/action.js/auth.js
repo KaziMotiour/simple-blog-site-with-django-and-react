@@ -70,3 +70,21 @@ export const authRegistration = (username, email, password1, password2) =>(
 
     }
 )
+
+
+export const userLogout = () =>(
+    console.log('hello'),
+   async dispatch => {
+        dispatch(authStart())
+        await axios.post('https://kazi-motiour-django-react-app.herokuapp.com/rest-auth/logout/')
+        .then(res =>{
+            console.log('success')
+            dispatch(auhtLogout())
+            
+
+        }).then(error =>{
+            dispatch(authFail(error))
+        })
+
+    }
+)
