@@ -35,6 +35,7 @@ export const authFail = error =>({
 
 
 export const authLogin = (username, password) =>(
+    console.log('hello'),
    async dispatch => {
         dispatch(authStart())
         await axios.post('https://kazi-motiour-django-react-app.herokuapp.com/rest-auth/login/', {username, password})

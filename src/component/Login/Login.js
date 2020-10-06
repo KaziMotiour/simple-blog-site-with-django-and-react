@@ -86,7 +86,7 @@ function SignIn(props) {
       const result1 = await new Promise((resolve) => setTimeout(() => {
         console.log('hello')
         {localStorage.getItem('token') && props.history.push('/')}
-      }, 2000))
+      }, 3000))
       return result1
 
     }
