@@ -8,8 +8,17 @@
 ## Live Demo
 https://kazi-motiour-django-react-app.herokuapp.com/
 
-## Available Scripts
+## Tools
+### Backend
+#### djnago
+#### postgress
 
-In the project directory, you can run:
+### Fronend
+#### React
+#### Redux
 
-### `npm start`
+#### djnago
+
+Copyright (c) 2020-3020 Kazi Motiour Rahman
+
+Go Through This Site Then You Will Know About This Site Prop
