@@ -3,22 +3,21 @@
 
 *This is a siple CRUD application with authentication by using Django, React, Redux, Sqlite#. By using this web application you can create you're articles and also can able to update and delete post,....*
 
-## There is one single problem, From One single API it take one to two requset only, after taken one or two request it's show 403 (Forbidden) error
+### There is one single problem, From One single API it take one to two requset only, after taken one or two request it's stop taken request and show 403 (Forbidden) error, we will slove this error as early as possible. But in localhost it dose not show any error and work fine.
 
 ## Live Demo
 https://kazi-motiour-django-react-app.herokuapp.com/
 
-## Tools
-### Backend
-#### djnago
-#### postgress
+# Tools
+## Front-end Part
+* React
+* Redux
+* material-ui
+## Back-end
+* Djnago
+* postgresql
 
-### Fronend
-#### React
-#### Redux
 
-#### djnago
 
-Copyright (c) 2020-3020 Kazi Motiour Rahman
-
-Go Through This Site Then You Will Know About This Site Prop
+**Copyright (c)** 2020-3020 Kazi Motiour Rahman
+## Go Through This Site Then You Will Know About This Site Properly.
