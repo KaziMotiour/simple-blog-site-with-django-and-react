@@ -5,8 +5,7 @@
 
 ### There is one single problem, From One single API it take one to two requset only, after taken one or two request it's stop taken request and show 403 (Forbidden) error, we will slove this error as early as possible. But in localhost it dose not show any error and work fine.
 
-## Live Demo
-https://kazi-motiour-django-react-app.herokuapp.com/
+
 
 # Tools
 ## Front-end Part
